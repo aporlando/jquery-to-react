@@ -1,26 +1,32 @@
 var uniqueCounter = 0;
-function addTodo(todoText, completed) {
-    uniqueCounter = uniqueCounter+1;
+
+// template for the Todo items
+function todoCreator(todoText, completed) {
+    uniqueCounter = uniqueCounter + 1;
     var todoId = 'todo' + uniqueCounter;
-    $('#todos').append(
-        '<li class="list-group-item" data-item="' + todoId + '">' +
-        '  <div class="form-check" onchange="completeTodo(this)">' +
+    return '<li class="list-group-item">' +
+        '  <div class="form-check" onchange="toggleComplete(this)">' +
         '    <input type="checkbox" class="form-check-input" id="' + todoId + '">' +
         '    <label class="form-check-label" for="' + todoId + '">' +
         (completed ? '<del>' + todoText + '</del>' : todoText) +
         '    </label>' +
         '  </div>' +
         '  <button onclick="deleteTodo(this)">Delete</button>' +
-        '</li>'
-    );
+        '</li>';
 }
 
+// Add a todo to the list
+function addTodo(todoText) {
+    $('#todos').append(todoCreator(todoText));
+}
+
+// Remove the todo entirely
 function deleteTodo(todo) {
-    console.log('complete item', todo);
     $(todo).parent().remove();
 }
 
-function completeTodo(todo) {
+// Strike out the todo item when it is completed, remove strike when it is incomplete
+function toggleComplete(todo) {
     var label = $(todo).find('label');
     if ($(todo).find('input').prop('checked')) {
         label.html('<del>' +
@@ -31,9 +37,9 @@ function completeTodo(todo) {
     }
 }
 
+// When the form input is submitted, add the todo item
 $("#addForm").on('submit', function(e) {
     e.preventDefault();
-    console.log($("input#todoInput").val());
     var input = $("input#todoInput");
     addTodo(input.val());
     input.val("");
