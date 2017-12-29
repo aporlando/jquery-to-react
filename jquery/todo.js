@@ -5,8 +5,8 @@ var uniqueCounter = 0;
 function todoCreator(todoText, completed) {
     uniqueCounter = uniqueCounter + 1;
     var todoId = 'todo' + uniqueCounter;
-    return '<li class="list-group-item">' +
-        '  <div class="form-check" onchange="toggleComplete(this);maybeHideDeleteAll();">' +
+    return '<li class="list-group-item d-flex">' +
+        '  <div class="form-check" style="flex: 1 1 auto;" onchange="toggleComplete(this);maybeHideDeleteAll();">' +
         '    <input type="checkbox" class="form-check-input" id="' + todoId + '">' +
         '    <label class="form-check-label" for="' + todoId + '">' +
         (completed ? '<del>' + todoText + '</del>' : todoText) +
