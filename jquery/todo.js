@@ -1,23 +1,25 @@
+// This exists to keep the checkbox & label in sync
 var uniqueCounter = 0;
 
-// template for the Todo items
+// template for the todo items
 function todoCreator(todoText, completed) {
     uniqueCounter = uniqueCounter + 1;
     var todoId = 'todo' + uniqueCounter;
     return '<li class="list-group-item">' +
-        '  <div class="form-check" onchange="toggleComplete(this)">' +
+        '  <div class="form-check" onchange="toggleComplete(this);maybeHideDeleteAll();">' +
         '    <input type="checkbox" class="form-check-input" id="' + todoId + '">' +
         '    <label class="form-check-label" for="' + todoId + '">' +
         (completed ? '<del>' + todoText + '</del>' : todoText) +
         '    </label>' +
         '  </div>' +
-        '  <button onclick="deleteTodo(this)">Delete</button>' +
+        '  <button onclick="deleteTodo(this);maybeHideDeleteAll();">Delete</button>' +
         '</li>';
 }
 
 // Add a todo to the list
 function addTodo(todoText) {
-    $('#todos').append(todoCreator(todoText));
+    var item = todoCreator(todoText);
+    $('#todos').append(item);
 }
 
 // Remove the todo entirely
@@ -37,6 +39,15 @@ function toggleComplete(todo) {
     }
 }
 
+function maybeHideDeleteAll() {
+    var completedItems = $('#todos input:checked').length;
+    if(completedItems > 0) {
+        $('#clearCompleted').removeClass('d-none');
+    } else {
+        $('#clearCompleted').addClass('d-none');
+    }
+}
+
 // When the form input is submitted, add the todo item
 $("#addForm").on('submit', function(e) {
     e.preventDefault();
@@ -44,3 +55,10 @@ $("#addForm").on('submit', function(e) {
     addTodo(input.val());
     input.val("");
 });
+
+// When the form input is submitted, add the todo item
+$("#clearCompleted").on('click', function(e) {
+    e.preventDefault(e);
+    $('#todos input:checked').closest('li').remove();
+});
+
