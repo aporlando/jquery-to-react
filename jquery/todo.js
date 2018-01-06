@@ -12,7 +12,7 @@ function todoCreator(todoText, completed) {
         (completed ? '<del>' + todoText + '</del>' : todoText) +
         '    </label>' +
         '  </div>' +
-        '  <button onclick="deleteTodo(this);maybeHideDeleteAll();">Delete</button>' +
+        '  <button onclick="deleteTodo(this);maybeHideDeleteAll();" class="btn btn-secondary btn-sm">Delete</button>' +
         '</li>';
 }
 
@@ -42,23 +42,27 @@ function toggleComplete(todo) {
 function maybeHideDeleteAll() {
     var completedItems = $('#todos input:checked').length;
     if(completedItems > 0) {
-        $('#clearCompleted').removeClass('d-none');
+        $('#clearCompleted').show();
     } else {
-        $('#clearCompleted').addClass('d-none');
+        $('#clearCompleted').hide();
     }
 }
 
-// When the form input is submitted, add the todo item
-$("#addForm").on('submit', function(e) {
-    e.preventDefault();
-    var input = $("input#todoInput");
-    addTodo(input.val());
-    input.val("");
-});
+// Attach the DOM events once the page has loaded
+$(document).ready(function() {
+    // When the form input is submitted, add the todo item
+    $("#addForm").on('submit', function(e) {
+        e.preventDefault();
+        var input = $("input#todoInput");
+        addTodo(input.val());
+        input.val("");
+    });
 
-// When the form input is submitted, add the todo item
-$("#clearCompleted").on('click', function(e) {
-    e.preventDefault(e);
-    $('#todos input:checked').closest('li').remove();
+    // When the form input is submitted, add the todo item
+    $("#clearCompleted").on('click', function(e) {
+        e.preventDefault(e);
+        $('#todos input:checked').closest('li').remove();
+        $(this).hide();
+    });
 });
 
