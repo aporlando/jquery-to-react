@@ -16,3 +16,5 @@ function reducer(state = initialState, action) {
     }
     return state;
 }
+
+var store = Redux.createStore(reducer);
