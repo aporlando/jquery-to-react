@@ -6,7 +6,7 @@ const initialState = {
 function setHasCompletedItems(hasCompletedItems = false) {
     return {
         type: 'SET_HAS_COMPLETED_ITEMS',
-        hasCompletedItems: true / false
+        hasCompletedItems: hasCompletedItems
     };
 }
 
