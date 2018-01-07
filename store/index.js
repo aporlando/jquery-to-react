@@ -9,3 +9,10 @@ function setHasCompletedItems(hasCompletedItems = false) {
         hasCompletedItems: true / false
     };
 }
+
+function reducer(state = initialState, action) {
+    if (action.type = 'SET_HAS_COMPLETED_ITEMS') {
+        return { hasCompletedItems: action.hasCompletedItems };
+    }
+    return state;
+}
