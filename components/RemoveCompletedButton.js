@@ -23,6 +23,6 @@ function mapStateToProps(state) {
 var RemoveCompletedButton = ReactRedux.connect(mapStateToProps)(UnconnectedRemoveCompletedButton);
 
 ReactDOM.render(
-    <RemoveCompletedButton />,
+    <RemoveCompletedButton store={store} />,
     document.querySelector('[data-react-component="RemoveCompletedButton"]')
 );
