@@ -51,14 +51,6 @@ function maybeHideDeleteAll() {
 // Attach the DOM events once the page has loaded
 $(document).ready(function() {
     // When the form input is submitted, add the todo item
-    $("#addForm").on('submit', function(e) {
-        e.preventDefault();
-        var input = $("input#todoInput");
-        addTodo(input.val());
-        input.val("");
-    });
-
-    // When the form input is submitted, add the todo item
     $("#clearCompleted").on('click', function(e) {
         e.preventDefault(e);
         $('#todos input:checked').closest('li').remove();
