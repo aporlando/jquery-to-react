@@ -8,3 +8,5 @@ class AddTodoInput extends React.Component {
         );
     }
 }
+
+ReactDOM.render(<AddTodoInput/>, document.querySelector('[data-react-component="AddTodoInput"]'));
