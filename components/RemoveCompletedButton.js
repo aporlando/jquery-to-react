@@ -1,4 +1,4 @@
-class RemoveCompletedButton extends React.Component {
+class UnconnectedRemoveCompletedButton extends React.Component {
     handleClick() {
         removeCheckedItems();
     }
@@ -15,9 +15,12 @@ class RemoveCompletedButton extends React.Component {
     }
 }
 
-RemoveCompletedButton.defaultProps = {
-    show: false
-};
+function mapStateToProps(state) {
+    return {
+        show: state.hasCompletedItems
+    };
+}
+var RemoveCompletedButton = ReactRedux.connect(mapStateToProps)(UnconnectedRemoveCompletedButton);
 
 ReactDOM.render(
     <RemoveCompletedButton />,
