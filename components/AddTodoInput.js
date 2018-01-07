@@ -6,11 +6,16 @@ class AddTodoInput extends React.Component {
         };
     }
 
+    handleInput(e) {
+        this.setState({ text: e.target.value });
+    }
+
     render() {
         return (
             <form className="form-inline d-inline" id="addForm">
                 <input id="todoInput" type="text"
                        value={this.state.text}
+                       onChange={this.handleInput.bind(this)}
                        className="form-control"/>
                 <button id="addTodo" type="submit" className="btn btn-primary mx-1">Add</button>
             </form>
