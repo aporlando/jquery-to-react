@@ -1,12 +1,12 @@
 # jquery-to-react
 This project is a simple To Do List example of how to go about incrementally refactoring your JavaScript application to the [React](https://reactjs.org/) framework and how you can use [Redux](https://redux.js.org/) to share state between React and your original JavaScript.
 
-The default branch, 'withRedux' contains all the completed refactor examples by default. The refactoring steps are available for you via tags, or you may choose to view the project diffs by viewing the open pull requests.
+The default branch, 'master', is only the working jQuery To Do List. There are additional branches to track the examples, see the [branches](#branches) explanation below. The refactoring steps are available for you via tags, or you may choose to view the project diffs by viewing the open pull requests.
 
 This example was originally presented as part of a talk on Refactoring a Legacy Application with React.
 
 ## Branches
- - **master**
+ - **master** [default]
 
       This branch is the starting point - a working To Do list application using only plain JavaScript and some jQuery
 
@@ -14,7 +14,7 @@ This example was originally presented as part of a talk on Refactoring a Legacy 
 
       This branch includes examples of refactoring the 'add to do item' input and 'Remove Completed' items button to React (without Redux)
 
- - **withRedux** [default]
+ - **withRedux**
 
       This branch includes all the same content as the refactor branch and updates the 'Remove Completed' items button to use Redux state
 
