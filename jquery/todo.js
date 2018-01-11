@@ -39,30 +39,14 @@ function toggleComplete(todo) {
     }
 }
 
-function maybeHideDeleteAll() {
-    var completedItems = $('#todos input:checked').length;
-    if(completedItems > 0) {
-        $('#clearCompleted').show();
-    } else {
-        $('#clearCompleted').hide();
-    }
+function removeCheckedItems() {
+    $('#todos input:checked').closest('li').remove();
+    maybeHideDeleteAll();
+
 }
 
-// Attach the DOM events once the page has loaded
-$(document).ready(function() {
-    // When the form input is submitted, add the todo item
-    $("#addForm").on('submit', function(e) {
-        e.preventDefault();
-        var input = $("input#todoInput");
-        addTodo(input.val());
-        input.val("");
-    });
-
-    // When the form input is submitted, add the todo item
-    $("#clearCompleted").on('click', function(e) {
-        e.preventDefault(e);
-        $('#todos input:checked').closest('li').remove();
-        $(this).hide();
-    });
-});
+function maybeHideDeleteAll() {
+    var completedItems = $('#todos input:checked').length;
+    store.dispatch(setHasCompletedItems(completedItems > 0));
+}
 
