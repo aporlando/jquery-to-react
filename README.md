@@ -3,7 +3,7 @@ This project is a simple To Do List example of how to go about incrementally ref
 
 The default branch, 'master', is only the working jQuery To Do List. There are additional branches to track the examples, see the [branches](#branches) explanation below. The refactoring steps are available for you via tags, or you may choose to view the project diffs by viewing the open pull requests.
 
-This example was originally presented as part of a talk on Refactoring a Legacy Application with React.
+This example was originally presented as part of a talk on "Refactoring a Legacy Application with React" given at CodeMash 2018. Slides for the presentation are available at [https://speakerdeck.com/aporlando/refactoring-a-legacy-application-with-react](https://speakerdeck.com/aporlando/refactoring-a-legacy-application-with-react).
 
 ## Branches
  - **master** [default]
